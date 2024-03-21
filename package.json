@@ -1,6 +1,6 @@
 {
-  "name": "validate-test",
-  "version": "0.0.3",
+  "name": "@jarzt/validate-simple-type",
+  "version": "0.0.1",
   "description": "Provide simple methods to validate primitive type",
   "main": "dist/index.js",
   "scripts": {
