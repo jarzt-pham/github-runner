@@ -28,6 +28,7 @@ jobs:
   build:
     needs: setup
     runs-on: ubuntu-latest
+    steps:
       - name: Build
         run: |
           echo Build started
@@ -37,6 +38,7 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    steps:
       - name: Publish
         run: |
           echo Publish started
