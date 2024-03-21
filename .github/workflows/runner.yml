@@ -31,19 +31,10 @@ jobs:
           npm run build
           echo Build finished
           
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: |
-          echo Build started
-          npm run build
-          echo Build finished
-
       - name: Publish
         run: |
           echo Publish started
-          npm run publish
+          npm publish --access=public
           echo Publish finished
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

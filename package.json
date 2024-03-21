@@ -1,12 +1,11 @@
 {
   "name": "@jarzt_pham/validate-primitive-type",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provide simple methods to validate primitive type",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc --build tsconfig.json",
-    "publish": "npm publish --access public"
+    "build": "npx tsc --build tsconfig.json"  
   },
   "author": "Jarzt",
   "license": "ISC",
