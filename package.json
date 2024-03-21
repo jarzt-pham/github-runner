@@ -1,6 +1,6 @@
 {
-  "name": "@jarzt/validate-simple-type",
-  "version": "0.0.1",
+  "name": "@jarzt_pham/validate-primitive-type",
+  "version": "1.0.0",
   "description": "Provide simple methods to validate primitive type",
   "main": "dist/index.js",
   "scripts": {
@@ -12,5 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "typescript": "^5.4.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarzt-pham/runner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jarzt-pham/runner/issues"
+  },
+  "homepage": "https://github.com/jarzt-pham/runner#readme",
+  "devDependencies": {}
 }
