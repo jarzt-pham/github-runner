@@ -45,7 +45,7 @@ jobs:
       - name: Publish
         run: |
           echo Publish started
-          npm public --access=public
+          npm publish --access=public
           echo Publish finished
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
