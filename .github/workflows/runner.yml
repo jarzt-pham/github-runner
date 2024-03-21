@@ -18,7 +18,11 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-      
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -30,11 +34,18 @@ jobs:
           echo Build started
           npm run build
           echo Build finished
-          
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Publish
         run: |
           echo Publish started
-          npm publish --access=public
+          npm run publish
           echo Publish finished
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
