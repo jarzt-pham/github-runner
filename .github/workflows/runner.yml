@@ -28,6 +28,5 @@ jobs:
     steps:
       - name: Third job on the same runner
         run: echo "This is the third job running on the same runner as the first job"
-In this configuration:
 
 
