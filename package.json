@@ -1,6 +1,6 @@
 {
   "name": "@jarzt_pham/validate-primitive-type",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provide simple methods to validate primitive type",
   "main": "dist/index.js",
   "scripts": {
