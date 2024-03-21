@@ -43,6 +43,6 @@ jobs:
       - name: Publish
         run: |
           echo Publish started
-          npm run publish
+          npm publish --access=public
           echo Publish finished
 
