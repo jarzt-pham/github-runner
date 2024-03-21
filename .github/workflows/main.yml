@@ -20,15 +20,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-          registry-url: https://registry.npmjs.org/
 
-      - name: Install dependencies
-        run: npm install
+
 
   build:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: npm install
+        
       - name: Build
         run: |
           echo Build started
@@ -39,11 +40,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish
         run: |
           echo Publish started
           npm run publish
           echo Publish finished
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
