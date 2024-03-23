@@ -1,17 +1,14 @@
 {
   "name": "@jarzt_pham/validate-primitive-type",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Provide simple methods to validate primitive type",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc --build tsconfig.json"  
+    "test": "jest",
+    "build": "npx tsc --build tsconfig.json"
   },
   "author": "Jarzt",
   "license": "ISC",
-  "dependencies": {
-    "typescript": "^5.4.3"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jarzt-pham/runner.git"
@@ -20,5 +17,10 @@
     "url": "https://github.com/jarzt-pham/runner/issues"
   },
   "homepage": "https://github.com/jarzt-pham/runner#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.3"
+  }
 }

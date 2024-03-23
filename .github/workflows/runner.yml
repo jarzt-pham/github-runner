@@ -2,31 +2,55 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - '*'
 
   workflow_dispatch:
 jobs:
-  first-job:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-  second-job:
-    runs-on: ${{ needs.first-job.runs-on }}
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+  
+  build-and-publish:
+    runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Second job on the same runner
-        run: echo "This is the second job running on the same runner as the first job"
+      - uses: actions/checkout@v4
 
-  third-job:
-    runs-on: ${{ needs.first-job.runs-on }}
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: https://registry.npmjs.org
 
-    steps:
-      - name: Third job on the same runner
-        run: echo "This is the third job running on the same runner as the first job"
+      - name: Update package.json with tag version
+        run: |
+          eco "TAG_VERSION=${GITHUB_REF#refs/tags/}"
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          jq --arg tag_version "$TAG_VERSION" '.version = $new_version' package.json > temp.json && mv temp.json package.json
+
+      - name: Install dependencies
+        run: npm install  
+      
+      - name: Build
+        run: npm run build
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
 
 
