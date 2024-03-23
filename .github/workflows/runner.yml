@@ -38,7 +38,7 @@ jobs:
       - name: Update package.json with tag version
         run: |
           echo "TAG_VERSION=${GITHUB_REF#refs/tags/}"
-          TAG_NAME=${GITHUB_REF#refs/tags/}
+          TAG_VERSION=${GITHUB_REF#refs/tags/}
           jq --arg tag_version "$TAG_VERSION" '.version = $tag_version' package.json > temp.json && mv temp.json package.json
 
       - name: Check version of package.json
